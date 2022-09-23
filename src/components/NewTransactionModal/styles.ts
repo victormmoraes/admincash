@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { darken } from "polished";
+import { darken, transparentize } from "polished";
 
 export const Container = styled.form`
   h2 {
@@ -53,13 +53,34 @@ margin: 1rem 0;
 display: grid;
 grid-template-columns: 1fr 1fr;
 gap: 0.5rem;
+`;
 
-button {
+//Criação da interface das propriedades do componente RadioButton
+interface RadioButtonProps {
+  isActive: boolean;
+  activeColor: 'green' | 'red';
+}
+
+//Criação do objeto colors
+const colors = {
+  green: '#33CC95',
+  red: '#E52E4D'
+}
+
+//Usando generic do TypeScript para 'dizer' que o botão é do tipo RadioButtonProps
+export const RadioButton = styled.button<RadioButtonProps>`
   height: 4rem;
   border: 1px solid #d7d7d7;
   border-radius: .25rem;
 
-  background: transparent;
+  //Uma vez podendo acessar as propriedades do componente, podemos trabalhar com os dados
+  //Criamos uma arrow function na interpolação  e retornamos
+  //Se isActive for true -> usamos o helper transparentize da lib polished para transparecer a cor que vem do objeto
+  //colors e possui a chave que vem da prop activeColor, se não, igual a transparente
+  background: ${(props) => props.isActive
+    ? transparentize(0.9, colors[props.activeColor])
+    : 'transparent'
+  };
 
   display: flex;
   align-items: center;
@@ -82,5 +103,4 @@ button {
     font-size: 1rem;
     color: var(--text-color);
   }
-}
 `;
