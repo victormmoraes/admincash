@@ -1,6 +1,8 @@
 import Modal from 'react-modal';
-import { Container } from './styles';
-import closeImg from '../../assets/close.svg'
+import { Container, TransactionTypeContainer } from './styles';
+import closeImg from '../../assets/close.svg';
+import incomeImg from '../../assets/income.svg'
+import outcomeImg from '../../assets/outcome.svg'
 
 //A Modal, para funcionar, depende das props isOpen (um boolean) e onRequestClose, uma função que seta o estado para falso
 //Criamos a interface então, esperando receber esses tipos de dados na nossa aplicação.
@@ -41,6 +43,22 @@ export function NewTransactionModal({ isOpen, onRequestClose }: NewTransactionMo
           type="number"
           placeholder='Valor'
         />
+
+        <TransactionTypeContainer>
+          <button
+            type='button'
+          >
+            <img src={incomeImg} alt="Entrada" />
+            <span>Entrada</span>
+          </button>
+
+          <button
+            type='button'
+          >
+            <img src={outcomeImg} alt="Saída" />
+            <span>Saída</span>
+          </button>
+        </TransactionTypeContainer>
 
         <input
           placeholder='Categoria'
