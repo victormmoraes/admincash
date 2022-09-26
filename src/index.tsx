@@ -10,6 +10,30 @@ createServer({
     transaction: Model,
   },
 
+  //Inicializando o banco fake com informações pré-cadastradas
+  seeds(server) {
+    server.db.loadData({
+      transactions: [
+        {
+          id: 1,
+          title: 'Salário',
+          type: 'deposit',
+          category: 'Salário',
+          amount: 5000,
+          createdAt: new Date('2022-09-10 09:00:00'),
+        },
+        {
+          id: 2,
+          title: 'Aluguel',
+          type: 'withdraw',
+          category: 'Casa',
+          amount: 2000,
+          createdAt: new Date('2022-09-11 09:00:00'),
+        },
+      ]
+    })
+  },
+
   routes() {
     this.namespace = 'api';
 
