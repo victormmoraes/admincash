@@ -4,6 +4,7 @@ import closeImg from '../../assets/close.svg';
 import incomeImg from '../../assets/income.svg'
 import outcomeImg from '../../assets/outcome.svg'
 import { FormEvent, useState } from 'react';
+import { api } from '../../services/api';
 
 //A Modal, para funcionar, depende das props isOpen (um boolean) e onRequestClose, uma função que seta o estado para falso
 //Criamos a interface então, esperando receber esses tipos de dados na nossa aplicação.
@@ -28,13 +29,15 @@ export function NewTransactionModal({ isOpen, onRequestClose }: NewTransactionMo
     //Prevenir o comportamento padrão
     event.preventDefault();
 
-    console.log({
+    const data = {
       title,
       value,
       category,
       type
-    }
-    )
+    };
+
+    //Salvando dados na variável data (formato JSON) e passando para api através do método post
+    api.post('/transactions', data)
 
   }
 
