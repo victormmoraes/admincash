@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Dashboard } from './components/Dashboard';
 import { Header } from './components/Header';
 import { NewTransactionModal } from './components/NewTransactionModal';
+import { TransactionsProvider } from './TransactionsContext';
 import Modal from 'react-modal';
 
 import { GlobalStyle } from './styles/global';
@@ -23,7 +24,7 @@ export function App() {
   }
 
   return (
-    <>
+    <TransactionsProvider>
       {/* 
     O componente Header, é quem possui o botão (trigger) para abrir a Modal, 
     por isso, é necessário enviar para ele a função que seta o estado da variável isNewTransactionSectionModalOpen  para true 
@@ -45,6 +46,6 @@ export function App() {
       />
 
       <GlobalStyle />
-    </>
+    </TransactionsProvider>
   );
 };
