@@ -2,11 +2,13 @@ import { useState } from 'react';
 import { Dashboard } from './components/Dashboard';
 import { Header } from './components/Header';
 import { NewTransactionModal } from './components/NewTransactionModal';
-import { TransactionsProvider } from './TransactionsContext';
+import { TransactionsProvider } from './hooks/useTransactions';
 import Modal from 'react-modal';
 
+//Estilo global da aplicação
 import { GlobalStyle } from './styles/global';
 
+//Usando método para acessibilidade, quando a modal estiver aberta
 Modal.setAppElement('#root');
 
 export function App() {
@@ -24,6 +26,7 @@ export function App() {
   }
 
   return (
+    //Envolvendo a aplicação em um contexto para prover as transactions, utilizadas em vários outros componentes
     <TransactionsProvider>
       {/* 
     O componente Header, é quem possui o botão (trigger) para abrir a Modal, 

@@ -1,10 +1,10 @@
+import { FormEvent, useState } from 'react';
+import { useTransactions } from '../../hooks/useTransactions';
 import Modal from 'react-modal';
-import { Container, RadioButton, TransactionTypeContainer } from './styles';
 import closeImg from '../../assets/close.svg';
 import incomeImg from '../../assets/income.svg'
 import outcomeImg from '../../assets/outcome.svg'
-import { FormEvent, useState } from 'react';
-import { api } from '../../services/api';
+import { Container, RadioButton, TransactionTypeContainer } from './styles';
 
 //A Modal, para funcionar, depende das props isOpen (um boolean) e onRequestClose, uma função que seta o estado para falso
 //Criamos a interface então, esperando receber esses tipos de dados na nossa aplicação.
@@ -16,29 +16,35 @@ interface NewTransactionModalProps {
 //Desestruturamos as props de nossa interface e utilizamos na Modal
 export function NewTransactionModal({ isOpen, onRequestClose }: NewTransactionModalProps) {
 
+  //Desestruturando a função createTransaction do hook que usa o contexto, para uso na função handle
+  const { createTransaction } = useTransactions();
+
   //Criamos variáveis no estado para cada input
   const [title, setTitle] = useState('');
-  const [value, setValue] = useState(0);
+  const [amount, setAmount] = useState(0);
   const [category, setCategory] = useState('');
 
   //Criamos no estado uma variável para armazenar o tipo (entrada ou saída) escolhido pelo usuário
   const [type, setType] = useState('deposit');
 
   //Função para lidar com a ação de clique do usuário
-  function handleCreateNewTransaction(event: FormEvent) {
+  async function handleCreateNewTransaction(event: FormEvent) {
     //Prevenir o comportamento padrão
     event.preventDefault();
 
-    const data = {
-      title,
-      value,
-      category,
-      type
-    };
-
-    //Salvando dados na variável data (formato JSON) e passando para api através do método post
-    api.post('/transactions', data)
-
+    await createTransaction(
+      {
+        title,
+        amount,
+        category,
+        type,
+      }
+    )
+    setTitle('');
+    setAmount(0);
+    setCategory('');
+    setType('deposit');
+    onRequestClose();
   }
 
   return (
@@ -77,8 +83,8 @@ export function NewTransactionModal({ isOpen, onRequestClose }: NewTransactionMo
         <input
           type="number"
           placeholder='Valor'
-          value={value}
-          onChange={event => setValue(Number(event.target.value))}
+          value={amount}
+          onChange={event => setAmount(Number(event.target.value))}
         />
 
         <TransactionTypeContainer>
