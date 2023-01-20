@@ -1,46 +1,59 @@
-# Getting Started with Create React App
+<h1 align="center">
+    <img alt="NextLevelWeek" title="#NextLevelWeek" src="src/assets/logo.svg" />
+</h1>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<p align="center" id="objetivo">Aplicação para controle financeiro básico!</p>
 
-## Available Scripts
+<h3 align="center" id="status"> 
+	🚧 Em desenvolvimento... 🚀 🚧
+</h3>
 
-In the project directory, you can run:
+<h4 align="center" id="requisitos"> Pré-requisitos </h4>
 
-### `npm start`
+<p align="center">Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
+[Git](https://git-scm.com), [Node.js](https://nodejs.org/en/). </p>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+<p align="center">
+Além disto é bom ter um editor para trabalhar com o código como [VSCode](https://code.visualstudio.com/)
+</p>
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### :camera_flash: Layout
 
-### `npm test`
+<div align="center" style="display: flex; align-items: flex-start; justify-content: center;">
+  <img alt="Captura de tela da aplicação" title="DT Money" src="src/assets/dtmoney.jpg">
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+  <img alt="Captura de tela aplicação" title="DT Money" src="src/assets/modal.jpg">
+</div>
 
-### `npm run build`
+### 🛠 Tecnologias
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+As seguintes ferramentas foram usadas na construção do projeto:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- [Node.js](https://nodejs.org/en/)
+- [React](https://pt-br.reactjs.org/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Styled Components](https://styled-components.com/)
+- [Axios](https://axios-http.com/ptbr/)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 🎲 Rodando o projeto
 
-### `npm run eject`
+```bash
+# Clone este repositório
+$ git clone <https://github.com/victormmoraes/admincash.git>
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+# Acesse a pasta do projeto no terminal/cmd
+$ cd admincash
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+# Instale as dependências
+$ npm install
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+# Execute a aplicação em modo de desenvolvimento
+$ npm start
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+# O servidor inciará na porta:3000 - acesse <http://localhost:3000>
+```
 
-## Learn More
+### 🦸 Autor
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Feito com ❤️ por Victor Medrado 👋🏽 [Entre em contato!](https://www.linkedin.com/in/victormedrado/)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
